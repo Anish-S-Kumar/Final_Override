@@ -12,7 +12,6 @@
     </linearGradient>
   </defs>
   <rect width="1440" height="400" fill="url(#herobg)"/>
-  <!-- Circuit traces -->
   <g stroke="url(#trace)" stroke-width="2" fill="none">
     <path d="M0,80 H300 L350,130 H600 L650,80 H1000 L1050,130 H1440"/>
     <path d="M0,200 H200 L250,250 H550 L600,200 H850 L900,250 H1200 L1250,200 H1440"/>

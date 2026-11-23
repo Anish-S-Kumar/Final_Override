@@ -1,120 +1,351 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="description" content="FINAL OVERRIDE - Timed Escape-Room Style Tech Challenge by Invictors Club, VVCE Mysuru" />
+  <meta name="description"
+    content="FINAL OVERRIDE - Timed Escape-Room Style Tech Challenge by Invictors Club, VVCE Mysuru" />
   <title>FINAL OVERRIDE — Invictors Club</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&family=Orbitron:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/tokens.css" />
   <link rel="stylesheet" href="/css/styles.css" />
 </head>
+
 <body>
+
+  <!-- Inline SVG Icon Sprite (Self-Hosted, zero external CDN) -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <defs>
+      <g id="icon-signal">
+        <path d="M2 20h20M5 20a7 7 0 0 1 14 0M8 20a4 4 0 0 1 8 0M11 20a1 1 0 0 1 2 0" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" />
+      </g>
+      <g id="icon-lock">
+        <rect x="5" y="11" width="14" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2" />
+        <path d="M8 11V7a4 4 0 0 1 8 0v4" fill="none" stroke="currentColor" stroke-width="2" />
+        <circle cx="12" cy="16" r="1.5" fill="currentColor" />
+      </g>
+      <g id="icon-terminal">
+        <rect x="3" y="4" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2" />
+        <path d="M7 8l4 4-4 4M13 16h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      </g>
+      <g id="icon-flag">
+        <path d="M4 22V3M4 4h12l-2 5 2 5H4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round" />
+      </g>
+      <g id="icon-users">
+        <circle cx="9" cy="7" r="4" fill="none" stroke="currentColor" stroke-width="2" />
+        <path d="M2 21v-2a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v2" fill="none" stroke="currentColor" stroke-width="2" />
+        <path d="M16 3.13a4 4 0 0 1 0 7.75M22 21v-2a4 4 0 0 0-3-3.87" fill="none" stroke="currentColor"
+          stroke-width="2" />
+      </g>
+      <g id="icon-check">
+        <path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+          stroke-linejoin="round" />
+      </g>
+      <g id="icon-alert">
+        <path d="M12 2L2 20h20L12 2zM12 9v5M12 17h.01" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" />
+      </g>
+      <g id="icon-clock">
+        <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2" />
+        <path d="M12 6v6l4 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      </g>
+      <g id="icon-copy">
+        <rect x="9" y="9" width="12" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="2" />
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" fill="none" stroke="currentColor"
+          stroke-width="2" />
+      </g>
+      <g id="icon-undo">
+        <path d="M3 7v6h6M3 13a9 9 0 1 1 2.8 6.4L3 13" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" />
+      </g>
+      <g id="icon-help">
+        <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2" />
+        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" />
+      </g>
+      <g id="icon-trophy">
+        <path
+          d="M6 9V4h12v5a6 6 0 0 1-12 0zM12 15v4M8 22h8M6 5H3a2 2 0 0 0-2 2v1a4 4 0 0 0 4 4h1M18 5h3a2 2 0 0 1 2 2v1a4 4 0 0 1-4 4h-1"
+          fill="none" stroke="currentColor" stroke-width="2" />
+      </g>
+      <g id="icon-gamepad">
+        <rect x="2" y="6" width="20" height="12" rx="4" fill="none" stroke="currentColor" stroke-width="2" />
+        <path d="M6 12h4M8 10v4M15 11h.01M18 13h.01" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" />
+      </g>
+    </defs>
+  </svg>
 
   <!-- Site Header (All Pages) -->
   <header class="site-header">
     <div class="institution-strip">
       <span class="inst-name">VIDYAVARDHAKA COLLEGE OF ENGINEERING</span>
-      <span class="inst-sub">Dept. of Computer Science & Engineering · Autonomous Institute | Affiliated to VTU Belagavi</span>
+      <span class="inst-sub">Dept. of Computer Science &amp; Engineering &middot; Autonomous Institute | Affiliated to
+        VTU Belagavi</span>
     </div>
     <div class="header-container">
       <div class="logo-wrapper">
-        <img src="/assets/logo.jpg" alt="Invictors Club Official Logo" class="club-logo" onerror="this.src='/assets/logo.svg'" />
+        <img src="/assets/logo.jpg" alt="Invictors Club Official Logo" class="club-logo"
+          onerror="this.src='/assets/logo.svg'" />
       </div>
       <div class="brand-text-block">
         <div class="presenter-tag">INVICTORS CLUB PRESENTS</div>
         <h1 class="site-title">FINAL OVERRIDE</h1>
         <div class="challenge-pill">A TIMED TEAM ESCAPE-ROOM STYLE TECH CHALLENGE</div>
-        <p class="site-motto">DECODE · INNOVATE · OVERCOME</p>
+        <p class="site-motto">DECODE &middot; INNOVATE &middot; OVERCOME</p>
       </div>
     </div>
   </header>
 
   <!-- Navigation Bar -->
   <nav class="portal-nav-bar" aria-label="Portal Navigation">
-    <a href="/" class="portal-nav-link" id="nav-link-game">🎮 Mission Portal</a>
-    <a href="/leaderboard" class="portal-nav-link" id="nav-link-leaderboard">🏆 Live Leaderboard</a>
+    <a href="/" class="portal-nav-link" id="nav-link-game">
+      <svg class="ui-icon" width="16" height="16" aria-hidden="true">
+        <use href="#icon-gamepad"></use>
+      </svg>
+      <span>Mission Portal</span>
+    </a>
+    <a href="/leaderboard" class="portal-nav-link" id="nav-link-leaderboard">
+      <svg class="ui-icon" width="16" height="16" aria-hidden="true">
+        <use href="#icon-trophy"></use>
+      </svg>
+      <span>Live Leaderboard</span>
+    </a>
   </nav>
 
-  <!-- Sticky Status Bar & Progress Rail (Visible while playing) -->
-  <aside id="sticky-status-bar" class="sticky-status-bar" style="display: none;" aria-label="Mission Status">
+  <!-- Tactical HUD Status Bar & 5-Stage Rail (Visible while playing) -->
+  <aside id="sticky-status-bar" class="sticky-status-bar" style="display: none;" aria-label="Mission Tactical HUD">
     <div class="status-bar-inner">
       <div class="status-group">
         <div class="status-item">
-          <span class="status-label">Team:</span>
+          <span class="status-label">TEAM</span>
           <span id="status-team-name" class="status-value">-</span>
         </div>
         <div class="status-item">
-          <span class="status-label">Coord:</span>
-          <span id="status-coord-name" class="status-value">-</span>
+          <span class="status-label">STAGE</span>
+          <span id="status-stage-display" class="status-value">STAGE 1 / 5</span>
         </div>
       </div>
       <div class="status-group">
         <div class="status-item">
-          <span class="status-label">Live Time:</span>
-          <span id="status-time-display" class="status-time">00:00</span>
+          <span class="status-label">CLOCK</span>
+          <span id="status-time-display" class="status-time tabular-nums">00:00</span>
         </div>
         <div class="status-item">
-          <span class="status-label">Penalty:</span>
-          <span id="status-penalty" class="status-penalty">+0m</span>
+          <span class="status-label">PENALTY</span>
+          <span id="status-penalty" class="status-penalty tabular-nums">+0m</span>
+        </div>
+        <div class="status-item">
+          <button id="btn-toggle-notebook" class="btn-hud-tool" aria-label="Toggle Mission Notebook">
+            <svg class="ui-icon" width="14" height="14">
+              <use href="#icon-copy"></use>
+            </svg>
+            <span>DOSSIER</span>
+          </button>
         </div>
       </div>
     </div>
 
-    <!-- Animated Shimmer Progress Bar -->
+    <!-- Shimmer Progress Bar -->
     <div class="stage-progress-container" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
       <div id="stage-progress-fill" class="stage-progress-fill" style="width: 0%;"></div>
     </div>
 
-    <!-- 6-step Rail -->
-    <nav class="stage-rail" aria-label="Mission Steps">
-      <div class="rail-step">📡 1 Signal</div>
-      <div class="rail-step">🔓 2 Decode</div>
-      <div class="rail-step">🤖 3 AI Prompt</div>
-      <div class="rail-step">🚩 4 CTF</div>
-      <div class="rail-step">🤝 5 Sync</div>
-      <div class="rail-step">🧩 6 Override</div>
+    <!-- Master 6-Stage Tactical Rail -->
+    <nav class="stage-rail" id="master-stage-rail" aria-label="Mission 6 Stages">
+      <div class="rail-step" data-stage="1" data-slot="1">
+        <svg class="ui-icon" width="14" height="14">
+          <use href="#icon-signal"></use>
+        </svg>
+        <span>1 Intercept</span>
+      </div>
+      <div class="rail-step" data-stage="2" data-slot="2">
+        <svg class="ui-icon" width="14" height="14">
+          <use href="#icon-lock"></use>
+        </svg>
+        <span>2 Decode</span>
+      </div>
+      <div class="rail-step" data-stage="3" data-slot="3">
+        <svg class="ui-icon" width="14" height="14">
+          <use href="#icon-terminal"></use>
+        </svg>
+        <span>3 WARDEN</span>
+      </div>
+      <div class="rail-step" data-stage="4" data-slot="4">
+        <svg class="ui-icon" width="14" height="14">
+          <use href="#icon-flag"></use>
+        </svg>
+        <span>4 CTF</span>
+      </div>
+      <div class="rail-step" data-stage="5" data-slot="5">
+        <svg class="ui-icon" width="14" height="14">
+          <use href="#icon-users"></use>
+        </svg>
+        <span>5 Sync</span>
+      </div>
+      <div class="rail-step" data-stage="6" data-slot="6">
+        <svg class="ui-icon" width="14" height="14">
+          <use href="#icon-lock"></use>
+        </svg>
+        <span>6 Override</span>
+      </div>
     </nav>
+
+    <!-- Compact Intelligence Dossier Strip (6 Equal Slots) -->
+    <div id="dossier-compact-strip" class="dossier-compact-strip" aria-label="Intelligence Dossier Strip">
+      <div class="dossier-slot locked" data-slot="1">
+        <svg class="ui-icon ui-icon-muted" width="16" height="16">
+          <use href="#icon-lock"></use>
+        </svg>
+        <span class="dossier-slot-name">Intercept</span>
+      </div>
+      <div class="dossier-slot locked" data-slot="2">
+        <svg class="ui-icon ui-icon-muted" width="16" height="16">
+          <use href="#icon-lock"></use>
+        </svg>
+        <span class="dossier-slot-name">Decode</span>
+      </div>
+      <div class="dossier-slot locked" data-slot="3">
+        <svg class="ui-icon ui-icon-muted" width="16" height="16">
+          <use href="#icon-lock"></use>
+        </svg>
+        <span class="dossier-slot-name">WARDEN</span>
+      </div>
+      <div class="dossier-slot locked" data-slot="4">
+        <svg class="ui-icon ui-icon-muted" width="16" height="16">
+          <use href="#icon-lock"></use>
+        </svg>
+        <span class="dossier-slot-name">CTF</span>
+      </div>
+      <div class="dossier-slot locked" data-slot="5">
+        <svg class="ui-icon ui-icon-muted" width="16" height="16">
+          <use href="#icon-lock"></use>
+        </svg>
+        <span class="dossier-slot-name">Sync</span>
+      </div>
+      <div class="dossier-slot locked" data-slot="6">
+        <svg class="ui-icon ui-icon-muted" width="16" height="16">
+          <use href="#icon-lock"></use>
+        </svg>
+        <span class="dossier-slot-name">Override</span>
+      </div>
+    </div>
+
+    <!-- Expanded Dossier Details & Notes Panel -->
+    <div id="dossier-expanded-panel" class="dossier-expanded-panel" style="display: none;"
+      aria-label="Expanded Mission Dossier">
+      <div class="dossier-expanded-inner">
+        <div class="dossier-expanded-header">
+          <div class="dossier-header-title">
+            <svg class="ui-icon" width="18" height="18">
+              <use href="#icon-copy"></use>
+            </svg>
+            <span>INTELLIGENCE DOSSIER &amp; RECOVERED CRYPTO FRAGMENTS</span>
+          </div>
+          <button type="button" id="btn-close-dossier" class="btn-close-drawer"
+            aria-label="Collapse Dossier">&times;</button>
+        </div>
+        <div id="dossier-expanded-grid" class="dossier-expanded-grid">
+          <!-- Populated dynamically with full mission names and fragments -->
+        </div>
+        <div class="dossier-notes-box">
+          <div class="dossier-notes-title">
+            <svg class="ui-icon" width="14" height="14">
+              <use href="#icon-terminal"></use>
+            </svg>
+            <span>SQUAD CRYPTANALYSIS WORKSPACE &amp; NOTES</span>
+          </div>
+          <textarea id="dossier-notes-input" class="dossier-notes-textarea"
+            placeholder="Record decrypted access phrases, intermediate keys, or decoding notes here (auto-saved in session)..."></textarea>
+        </div>
+      </div>
+    </div>
   </aside>
 
   <!-- Main View Container -->
   <main id="app-main" class="main-wrapper" role="main">
     <div class="card" style="text-align: center; padding: 40px 20px;">
-      <p style="color: var(--muted); font-size: 1.1rem;">Initializing mission protocols...</p>
+      <p style="color: var(--text-muted); font-size: 1.1rem;">Initializing tactical interface protocols...</p>
     </div>
   </main>
 
   <!-- Toast Notification Container -->
   <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true"></div>
 
+  <!-- In-App Coordinator Help Modal -->
+  <div id="coordinator-help-modal" class="modal-backdrop" style="display: none;" role="dialog" aria-modal="true"
+    aria-labelledby="help-modal-title">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 id="help-modal-title">
+          <svg class="ui-icon" width="18" height="18">
+            <use href="#icon-help"></use>
+          </svg>
+          COORDINATOR ASSISTANCE DESK
+        </h3>
+        <button id="btn-close-help-modal" class="btn-close-drawer" aria-label="Close Help">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>If you encounter hardware failure, network disconnection, or need supervisor clarification, raise your hand
+          or report to your assigned desk coordinator.</p>
+        <div class="help-coordinator-info">
+          <div class="info-row">
+            <span class="info-label">ASSIGNED COORDINATOR:</span>
+            <span id="help-coord-name" class="info-value">-</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">EVENT CONTROL DESK:</span>
+            <span class="info-value">Main CS Lab Control Station 1</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">RULES OF ENGAGEMENT:</span>
+            <span class="info-value">Tab switching outside of Stage 4 is penalized. Multi-device squad sync is required
+              on Stage 5.</span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="btn-dismiss-help" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Site Footer (All Pages) -->
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-stages-strip">
-        <span>INTERCEPT</span> · <span>DECODE</span> · <span>PROMPT</span> · <span>CAPTURE</span> · <span>MERGE</span> · <span class="override-highlight">OVERRIDE</span>
+        <span>INTERCEPT</span> &middot; <span>DECODE</span> &middot; <span>PROMPT</span> &middot; <span>CAPTURE</span>
+        &middot; <span class="override-highlight">OVERRIDE</span>
       </div>
-      <div class="footer-coords">
-        <strong>Student Coordinators:</strong>
-        <span>Akul P Yadav: 7090543876</span> |
-        <span>Gagan S Urs: 9108252676</span> |
-        <span>Anish S Kumar: 7975274945</span>
+      <div class="footer-help-action">
+        <button id="btn-call-coordinator" class="btn-help-coordinator">
+          <svg class="ui-icon" width="14" height="14">
+            <use href="#icon-help"></use>
+          </svg>
+          Need Assistance? Contact Coordinator Desk
+        </button>
       </div>
-      <p class="footer-inst">Invictors Club · Dept. of Computer Science & Engineering · VVCE Mysuru</p>
+      <p class="footer-inst">Invictors Club &middot; Dept. of Computer Science &amp; Engineering &middot; VVCE Mysuru
+      </p>
       <div class="footer-links">
-        <a href="https://instagram.com/theinvictors.vvce" target="_blank" rel="noopener noreferrer">📷 @theinvictors.vvce</a>
-        <a href="mailto:invictorsofficial@gmail.com">✉️ invictorsofficial@gmail.com</a>
-        <a href="https://invictors-vvce.vercel.app/" target="_blank" rel="noopener noreferrer">🌐 invictors-vvce.vercel.app</a>
+        <a href="https://instagram.com/theinvictors.vvce" target="_blank"
+          rel="noopener noreferrer">@theinvictors.vvce</a>
+        <a href="mailto:invictorsofficial@gmail.com">invictorsofficial@gmail.com</a>
+        <a href="https://invictors-vvce.vercel.app/" target="_blank"
+          rel="noopener noreferrer">invictors-vvce.vercel.app</a>
       </div>
     </div>
   </footer>
 
   <!-- Scripts -->
-  <script src="/js/audio.js?v=20261119_force_rev4"></script>
-  <script src="/js/decoder.js?v=20261119_force_rev4"></script>
-  <script src="/js/app.js?v=20261119_force_rev4"></script>
+  <script src="/js/audio.js?v=20261121_tac"></script>
+  <script src="/js/decoder.js?v=20261121_tac"></script>
+  <script type="module" src="/js/app.js?v=20261121_tac"></script>
 </body>
+
 </html>

@@ -1,11 +1,44 @@
+# Dependencies
 node_modules/
+
+# Environment files
 .env
+.env.*
+!.env.example
+
+# Database files and storage
 data/
 *.db
 *.db-shm
 *.db-wal
-.DS_Store
-*.log
-.vercel/
+*.sqlite
+*.sqlite3
+*.sqlite-wal
+*.sqlite-shm
 
+# Backups & Logs
+backups/
+logs/
+*.log
+
+# Sensitive Mission Content
+server/content/mission.json
+!server/content/mission.example.json
+
+# Generated PDFs & Build/Test Outputs
+*.pdf
+FINAL_OVERRIDE_ADMIN_GUIDE.pdf
+coverage/
+dist/
+
+# Vercel & Deployment artifacts
+.vercel/
 .vercel
+
+# OS & Editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo

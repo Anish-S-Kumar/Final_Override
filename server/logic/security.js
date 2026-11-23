@@ -19,8 +19,9 @@ function generateToken() {
 }
 
 function generateVerificationCode(teamName, startedAtMs, finishedAtMs) {
+  const secret = config.SHARD_SECRET || 'verify_secret_fallback';
   const payload = `${teamName}${startedAtMs}${finishedAtMs}`;
-  return sha256(payload).slice(0, 8).toUpperCase();
+  return crypto.createHmac('sha256', secret).update(payload).digest('hex').slice(0, 8).toUpperCase();
 }
 
 module.exports = {

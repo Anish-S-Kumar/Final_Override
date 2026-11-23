@@ -3,10 +3,24 @@
   "version": "1.0.0",
   "description": "FINAL OVERRIDE - Escape Room Tech Challenge for Invictors Club",
   "main": "server/index.js",
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "start": "node server/index.js",
     "seed": "node server/seed.js",
-    "test": "node server/tests/acceptance.test.js"
+    "wipe": "node scripts/wipe_database.js",
+    "test": "node server/tests/acceptance.test.js",
+    "dryrun": "node scripts/dryrun.js",
+    "lint": "node scripts/lint.js",
+    "migrate": "node scripts/migrate.js",
+    "db:migrate": "node scripts/db_migrate.js",
+    "db:check": "node scripts/db_check.js",
+    "content:check": "node scripts/content_check.js",
+    "build": "node scripts/build.js",
+    "loadtest": "node tests/load/loadtest.js",
+    "test:browser": "node scripts/verify_browser_flow.js",
+    "test:lamp": "node tests/e2e_lamp.test.js"
   },
   "keywords": [
     "final-override",
@@ -15,16 +29,21 @@
     "escape-room"
   ],
   "author": "Invictors Club",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@supabase/supabase-js": "^2.109.0",
     "cookie-parser": "^1.4.7",
     "dotenv": "^18.0.9",
     "express": "^5.3.0",
     "pdfkit": "^0.20.2",
+    "pg": "^8.23.1",
     "ws": "^8.23.0"
   },
   "optionalDependencies": {
     "better-sqlite3": "^9.6.0"
+  },
+  "devDependencies": {
+    "jsdom": "^31.0.1",
+    "playwright": "^1.65.1"
   }
 }

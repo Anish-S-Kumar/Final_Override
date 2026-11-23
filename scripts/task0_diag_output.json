@@ -1,0 +1,102 @@
+{
+  "baseline": {},
+  "providerTruth": {
+    "envProvider": "supabase",
+    "envDataSource": "not set",
+    "configProvider": "supabase",
+    "activeAdapter": "SupabaseRepository"
+  },
+  "adminBrowser": {
+    "loginFormExists": true,
+    "adminCardExists": true,
+    "clockStatusText": "--",
+    "teamCountText": "-- Registered Teams",
+    "teamsRowsCount": 1,
+    "pollingRunning": false,
+    "newRequestsDuringWait": [],
+    "consoleMessages": [
+      {
+        "type": "error",
+        "text": "Admin fetch error: SyntaxError: Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+      }
+    ],
+    "networkSummary": [
+      "request GET http://127.0.0.1:53377/admin -> ",
+      "request GET http://127.0.0.1:53377/css/tokens.css -> ",
+      "request GET http://127.0.0.1:53377/css/styles.css -> ",
+      "request GET http://127.0.0.1:53377/assets/logo.jpg -> ",
+      "request GET http://127.0.0.1:53377/js/audio.js?v=20261121_tac -> ",
+      "request GET http://127.0.0.1:53377/js/decoder.js?v=20261121_tac -> ",
+      "request GET http://127.0.0.1:53377/js/app.js?v=20261121_tac -> ",
+      "response GET http://127.0.0.1:53377/admin -> 200",
+      "response GET http://127.0.0.1:53377/css/tokens.css -> 200",
+      "response GET http://127.0.0.1:53377/css/styles.css -> 200",
+      "response GET http://127.0.0.1:53377/assets/logo.jpg -> 200",
+      "response GET http://127.0.0.1:53377/js/audio.js?v=20261121_tac -> 200",
+      "response GET http://127.0.0.1:53377/js/decoder.js?v=20261121_tac -> 200",
+      "response GET http://127.0.0.1:53377/js/app.js?v=20261121_tac -> 200",
+      "request GET http://127.0.0.1:53377/js/views/lobby.js -> ",
+      "request GET http://127.0.0.1:53377/js/views/stages.js -> ",
+      "request GET http://127.0.0.1:53377/js/views/coordinator.js -> ",
+      "request GET http://127.0.0.1:53377/js/views/admin.js -> ",
+      "response GET http://127.0.0.1:53377/js/views/lobby.js -> 200",
+      "response GET http://127.0.0.1:53377/js/views/coordinator.js -> 200",
+      "response GET http://127.0.0.1:53377/js/views/admin.js -> 200",
+      "response GET http://127.0.0.1:53377/js/views/stages.js -> 200",
+      "request POST http://127.0.0.1:53377/api/admin/verify -> ",
+      "request GET http://127.0.0.1:53377/api/admin/overview -> ",
+      "response POST http://127.0.0.1:53377/api/admin/verify -> 200",
+      "response GET http://127.0.0.1:53377/api/admin/overview -> 200"
+    ]
+  },
+  "databaseAudit": {
+    "sqlite": {
+      "tables": [
+        "audit_log",
+        "chat",
+        "game_stages",
+        "hint_config",
+        "hint_usage",
+        "leader_recovery",
+        "members",
+        "progress",
+        "schema_version",
+        "settings",
+        "submissions",
+        "team_sequences",
+        "teams",
+        "violations"
+      ],
+      "counts": {
+        "audit_log": 0,
+        "chat": 0,
+        "game_stages": 0,
+        "hint_config": 12,
+        "hint_usage": 0,
+        "leader_recovery": 0,
+        "members": 0,
+        "progress": 0,
+        "schema_version": 0,
+        "settings": 11,
+        "submissions": 0,
+        "team_sequences": 0,
+        "teams": 0,
+        "violations": 0
+      }
+    },
+    "supabaseConfigured": true,
+    "supabaseError": "sb.rpc(...).catch is not a function"
+  },
+  "stage2Current": {
+    "hasEncodedText": true,
+    "encodedTextLen": 288,
+    "plaintext": "ACCESS PHRASE IS CYGNUS. ASSEMBLE YOUR TEAM SEQUENCE IN LOWERCASE.",
+    "modules": null,
+    "layers": null,
+    "answer": "8m4k7r9x"
+  },
+  "hudClock": {
+    "timeCapMinutes": 90,
+    "timeCapEnforced": true
+  }
+}

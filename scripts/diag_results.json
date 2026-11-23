@@ -1,0 +1,865 @@
+{
+  "lamp": {
+    "initialLampInfo": {
+      "classes": "beacon-lamp",
+      "bgColor": "rgb(26, 34, 48)",
+      "border": "2px solid rgb(48, 54, 61)",
+      "boxShadow": "none",
+      "width": "20px",
+      "height": "20px"
+    },
+    "strobeBtnExists": {
+      "exists": true,
+      "disabled": false,
+      "text": "▶ Watch Light Blink"
+    },
+    "distinctClasses": [
+      "beacon-lamp",
+      "beacon-lamp active lamp-on"
+    ],
+    "distinctBgColors": [
+      "rgb(26, 34, 48)",
+      "rgb(0, 207, 252)",
+      "rgb(0, 210, 255)"
+    ],
+    "samples": [
+      {
+        "t": 1795337668486,
+        "classes": "beacon-lamp",
+        "bgColor": "rgb(26, 34, 48)",
+        "status": "FLASHING...",
+        "elapsed": 2
+      },
+      {
+        "t": 1795337668541,
+        "classes": "beacon-lamp",
+        "bgColor": "rgb(26, 34, 48)",
+        "status": "FLASHING...",
+        "elapsed": 57
+      },
+      {
+        "t": 1795337668610,
+        "classes": "beacon-lamp",
+        "bgColor": "rgb(26, 34, 48)",
+        "status": "FLASHING...",
+        "elapsed": 126
+      },
+      {
+        "t": 1795337668678,
+        "classes": "beacon-lamp",
+        "bgColor": "rgb(26, 34, 48)",
+        "status": "FLASHING...",
+        "elapsed": 194
+      },
+      {
+        "t": 1795337668747,
+        "classes": "beacon-lamp",
+        "bgColor": "rgb(26, 34, 48)",
+        "status": "FLASHING...",
+        "elapsed": 263
+      },
+      {
+        "t": 1795337668803,
+        "classes": "beacon-lamp",
+        "bgColor": "rgb(26, 34, 48)",
+        "status": "FLASHING...",
+        "elapsed": 319
+      },
+      {
+        "t": 1795337668858,
+        "classes": "beacon-lamp",
+        "bgColor": "rgb(26, 34, 48)",
+        "status": "FLASHING...",
+        "elapsed": 374
+      },
+      {
+        "t": 1795337668915,
+        "classes": "beacon-lamp",
+        "bgColor": "rgb(26, 34, 48)",
+        "status": "FLASHING...",
+        "elapsed": 431
+      },
+      {
+        "t": 1795337668982,
+        "classes": "beacon-lamp",
+        "bgColor": "rgb(26, 34, 48)",
+        "status": "FLASHING...",
+        "elapsed": 498
+      },
+      {
+        "t": 1795337669050,
+        "classes": "beacon-lamp",
+        "bgColor": "rgb(26, 34, 48)",
+        "status": "FLASHING...",
+        "elapsed": 566
+      },
+      {
+        "t": 1795337669113,
+        "classes": "beacon-lamp",
+        "bgColor": "rgb(26, 34, 48)",
+        "status": "FLASHING...",
+        "elapsed": 629
+      },
+      {
+        "t": 1795337669177,
+        "classes": "beacon-lamp",
+        "bgColor": "rgb(26, 34, 48)",
+        "status": "FLASHING...",
+        "elapsed": 693
+      },
+      {
+        "t": 1795337669237,
+        "classes": "beacon-lamp",
+        "bgColor": "rgb(26, 34, 48)",
+        "status": "FLASHING...",
+        "elapsed": 753
+      },
+      {
+        "t": 1795337669299,
+        "classes": "beacon-lamp active lamp-on",
+        "bgColor": "rgb(26, 34, 48)",
+        "status": "FLASHING...",
+        "elapsed": 815
+      },
+      {
+        "t": 1795337669357,
+        "classes": "beacon-lamp active lamp-on",
+        "bgColor": "rgb(26, 34, 48)",
+        "status": "FLASHING...",
+        "elapsed": 873
+      },
+      {
+        "t": 1795337669421,
+        "classes": "beacon-lamp active lamp-on",
+        "bgColor": "rgb(0, 207, 252)",
+        "status": "FLASHING...",
+        "elapsed": 937
+      },
+      {
+        "t": 1795337669484,
+        "classes": "beacon-lamp active lamp-on",
+        "bgColor": "rgb(0, 210, 255)",
+        "status": "FLASHING...",
+        "elapsed": 1000
+      },
+      {
+        "t": 1795337669542,
+        "classes": "beacon-lamp active lamp-on",
+        "bgColor": "rgb(0, 210, 255)",
+        "status": "FLASHING...",
+        "elapsed": 1058
+      },
+      {
+        "t": 1795337669598,
+        "classes": "beacon-lamp active lamp-on",
+        "bgColor": "rgb(0, 210, 255)",
+        "status": "FLASHING...",
+        "elapsed": 1114
+      },
+      {
+        "t": 1795337669662,
+        "classes": "beacon-lamp active lamp-on",
+        "bgColor": "rgb(0, 210, 255)",
+        "status": "FLASHING...",
+        "elapsed": 1178
+      }
+    ]
+  },
+  "hints": {
+    "stage1ChartBefore": true,
+    "stage1ChartAfter": {
+      "exists": true,
+      "display": "block",
+      "timerText": "30"
+    },
+    "stage2HintUiState": {
+      "buttonText": "Hint 2 of 2 (+5 min)",
+      "toastText": "Hint 1 unlocked (+3m)",
+      "hasHintContainerInCard": false
+    },
+    "sqliteHintConfigs": [
+      {
+        "id": "h1_1",
+        "stage": 1,
+        "hintNumber": 1,
+        "moduleName": "Morse Reference Table",
+        "enabled": 1,
+        "category": "tool",
+        "text": "Reveal the 26-letter Morse Code Reference Chart for 30 seconds.",
+        "displayDurationSeconds": 30,
+        "penaltyMinutes": 3,
+        "displayOrder": 1
+      },
+      {
+        "id": "h1_2",
+        "stage": 1,
+        "hintNumber": 2,
+        "moduleName": "Sector Solution",
+        "enabled": 1,
+        "category": "nudge",
+        "text": "The 4 sectors spell out the vault password NOVA.",
+        "displayDurationSeconds": 0,
+        "penaltyMinutes": 5,
+        "displayOrder": 2
+      },
+      {
+        "id": "h2_1",
+        "stage": 2,
+        "hintNumber": 1,
+        "moduleName": "Layer Deconstruction",
+        "enabled": 1,
+        "category": "tool",
+        "text": "Layer 1 is Base64, Layer 2 is Hexadecimal, Layer 3 is ROT13.",
+        "displayDurationSeconds": 0,
+        "penaltyMinutes": 3,
+        "displayOrder": 3
+      },
+      {
+        "id": "h2_2",
+        "stage": 2,
+        "hintNumber": 2,
+        "moduleName": "Assembly Sequence",
+        "enabled": 1,
+        "category": "nudge",
+        "text": "Assemble fragments in your assigned sequence. Type answer in lowercase.",
+        "displayDurationSeconds": 0,
+        "penaltyMinutes": 5,
+        "displayOrder": 4
+      },
+      {
+        "id": "h3_1",
+        "stage": 3,
+        "hintNumber": 1,
+        "moduleName": "Authorization Protocol",
+        "enabled": 1,
+        "category": "nudge",
+        "text": "State your official role, access phrase from Stage 2, and mission goal in full sentences.",
+        "displayDurationSeconds": 0,
+        "penaltyMinutes": 3,
+        "displayOrder": 5
+      },
+      {
+        "id": "h3_2",
+        "stage": 3,
+        "hintNumber": 2,
+        "moduleName": "Decoy Trap Avoidance",
+        "enabled": 1,
+        "category": "structural",
+        "text": "WARDEN will hand out a decoy fragment if you ask carelessly. Look for DELTA7 vs the true piece.",
+        "displayDurationSeconds": 0,
+        "penaltyMinutes": 5,
+        "displayOrder": 6
+      },
+      {
+        "id": "h4_1",
+        "stage": 4,
+        "hintNumber": 1,
+        "moduleName": "Token Reconnaissance",
+        "enabled": 1,
+        "category": "tool",
+        "text": "Token 1 is in DOM inspection; Token 2 in terminal robots/vault; Token 3 in image EXIF metadata.",
+        "displayDurationSeconds": 0,
+        "penaltyMinutes": 3,
+        "displayOrder": 7
+      },
+      {
+        "id": "h4_2",
+        "stage": 4,
+        "hintNumber": 2,
+        "moduleName": "Token Concat Order",
+        "enabled": 1,
+        "category": "nudge",
+        "text": "Join the three discovered tokens in numerical sequence: Token 1 + Token 2 + Token 3.",
+        "displayDurationSeconds": 0,
+        "penaltyMinutes": 5,
+        "displayOrder": 8
+      },
+      {
+        "id": "h5_1",
+        "stage": 5,
+        "hintNumber": 1,
+        "moduleName": "Squad Shard Matrix",
+        "enabled": 1,
+        "category": "structural",
+        "text": "Every team member must connect from their individual device to reveal their unique shard.",
+        "displayDurationSeconds": 0,
+        "penaltyMinutes": 3,
+        "displayOrder": 9
+      },
+      {
+        "id": "h5_2",
+        "stage": 5,
+        "hintNumber": 2,
+        "moduleName": "Final Machine Override",
+        "enabled": 1,
+        "category": "nudge",
+        "text": "Combine all squad member shards in registration order to unlock the terminal machines.",
+        "displayDurationSeconds": 0,
+        "penaltyMinutes": 5,
+        "displayOrder": 10
+      },
+      {
+        "id": "h6_1",
+        "stage": 6,
+        "hintNumber": 1,
+        "moduleName": "Override Vector",
+        "enabled": 1,
+        "category": "structural",
+        "text": "Combine the team code from Stage 5 with the final challenge response to compute the master override key.",
+        "displayDurationSeconds": 0,
+        "penaltyMinutes": 3,
+        "displayOrder": 11
+      },
+      {
+        "id": "h6_2",
+        "stage": 6,
+        "hintNumber": 2,
+        "moduleName": "System Integration Check",
+        "enabled": 1,
+        "category": "nudge",
+        "text": "Ensure all previous stage fragments are validated in the ledger before executing the final override sequence.",
+        "displayDurationSeconds": 0,
+        "penaltyMinutes": 5,
+        "displayOrder": 12
+      }
+    ]
+  },
+  "stage2Answer": {
+    "assembledFromStepList": "7R8M9X4K",
+    "teamStoredExpected": "7r8m9x4k",
+    "rot13": "ACCESS PHRASE IS CYGNUS. FRAGMENT TWO IS ASSEMBLED FROM THE PARTS LISTED FOR YOUR TEAM, IN YOUR TEAM ORDER.",
+    "feedback8M4": "Incorrect attempt #1. ",
+    "feedback8m4": "Incorrect attempt #2. ",
+    "vigenereDefaultVal": {
+      "value": "",
+      "placeholder": "Enter key (e.g. from decrypted payload)"
+    }
+  },
+  "layout": {
+    "360": {
+      "width": 360,
+      "overflowing": [],
+      "controlHeights": [
+        {
+          "id": "btn-paste-original",
+          "tag": "BUTTON",
+          "height": 35,
+          "computedHeight": "35px"
+        },
+        {
+          "id": "btn-undo-step",
+          "tag": "BUTTON",
+          "height": 36,
+          "computedHeight": "36px"
+        },
+        {
+          "id": "btn-reset-workbench",
+          "tag": "BUTTON",
+          "height": 35,
+          "computedHeight": "35px"
+        },
+        {
+          "id": "toolkit-input",
+          "tag": "TEXTAREA",
+          "height": 91,
+          "computedHeight": "91px"
+        },
+        {
+          "id": "btn-decode-b64",
+          "tag": "BUTTON",
+          "height": 40,
+          "computedHeight": "40px"
+        },
+        {
+          "id": "btn-decode-hex",
+          "tag": "BUTTON",
+          "height": 40,
+          "computedHeight": "40px"
+        },
+        {
+          "id": "btn-decode-rot13",
+          "tag": "BUTTON",
+          "height": 40,
+          "computedHeight": "40px"
+        },
+        {
+          "id": "btn-decode-atbash",
+          "tag": "BUTTON",
+          "height": 40,
+          "computedHeight": "40px"
+        },
+        {
+          "id": "btn-decode-reverse",
+          "tag": "BUTTON",
+          "height": 40,
+          "computedHeight": "40px"
+        },
+        {
+          "id": "btn-caesar-prev",
+          "tag": "BUTTON",
+          "height": 40,
+          "computedHeight": "40px"
+        }
+      ],
+      "typo": {
+        "title": {
+          "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+          "fontSize": "24px",
+          "fontWeight": "700",
+          "lineHeight": "38.4px"
+        },
+        "body": {
+          "fontFamily": "\"JetBrains Mono\", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
+          "fontSize": "12.48px",
+          "fontWeight": "600",
+          "lineHeight": "19.968px"
+        },
+        "label": {
+          "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "25.6px"
+        },
+        "button": {
+          "fontFamily": "\"Chakra Petch\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+          "fontSize": "14.08px",
+          "fontWeight": "700",
+          "lineHeight": "normal"
+        },
+        "input": {
+          "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "normal"
+        },
+        "payload": {
+          "fontFamily": "\"JetBrains Mono\", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
+          "fontSize": "13px",
+          "fontWeight": "400",
+          "lineHeight": "19.5px"
+        }
+      },
+      "nativeInputs": [
+        {
+          "id": "dossier-notes-input",
+          "bgColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(230, 237, 243)"
+        },
+        {
+          "id": "toolkit-input",
+          "bgColor": "rgb(7, 9, 13)",
+          "color": "rgb(230, 237, 243)"
+        },
+        {
+          "id": "caesar-shift-amount",
+          "bgColor": "rgb(7, 9, 13)",
+          "color": "rgb(230, 237, 243)"
+        },
+        {
+          "id": "vigenere-key-input",
+          "bgColor": "rgb(7, 9, 13)",
+          "color": "rgb(230, 237, 243)"
+        },
+        {
+          "id": "stage-answer-input",
+          "bgColor": "rgba(3, 8, 22, 0.9)",
+          "color": "rgb(255, 255, 255)"
+        }
+      ]
+    },
+    "768": {
+      "width": 768,
+      "overflowing": [],
+      "controlHeights": [
+        {
+          "id": "btn-paste-original",
+          "tag": "BUTTON",
+          "height": 35,
+          "computedHeight": "35px"
+        },
+        {
+          "id": "btn-undo-step",
+          "tag": "BUTTON",
+          "height": 36,
+          "computedHeight": "36px"
+        },
+        {
+          "id": "btn-reset-workbench",
+          "tag": "BUTTON",
+          "height": 35,
+          "computedHeight": "35px"
+        },
+        {
+          "id": "toolkit-input",
+          "tag": "TEXTAREA",
+          "height": 91,
+          "computedHeight": "91px"
+        },
+        {
+          "id": "btn-decode-b64",
+          "tag": "BUTTON",
+          "height": 40,
+          "computedHeight": "40px"
+        },
+        {
+          "id": "btn-decode-hex",
+          "tag": "BUTTON",
+          "height": 40,
+          "computedHeight": "40px"
+        },
+        {
+          "id": "btn-decode-rot13",
+          "tag": "BUTTON",
+          "height": 40,
+          "computedHeight": "40px"
+        },
+        {
+          "id": "btn-decode-atbash",
+          "tag": "BUTTON",
+          "height": 40,
+          "computedHeight": "40px"
+        },
+        {
+          "id": "btn-decode-reverse",
+          "tag": "BUTTON",
+          "height": 40,
+          "computedHeight": "40px"
+        },
+        {
+          "id": "btn-caesar-prev",
+          "tag": "BUTTON",
+          "height": 40,
+          "computedHeight": "40px"
+        }
+      ],
+      "typo": {
+        "title": {
+          "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+          "fontSize": "24px",
+          "fontWeight": "700",
+          "lineHeight": "38.4px"
+        },
+        "body": {
+          "fontFamily": "\"JetBrains Mono\", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
+          "fontSize": "12.48px",
+          "fontWeight": "600",
+          "lineHeight": "19.968px"
+        },
+        "label": {
+          "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "25.6px"
+        },
+        "button": {
+          "fontFamily": "\"Chakra Petch\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+          "fontSize": "14.08px",
+          "fontWeight": "700",
+          "lineHeight": "normal"
+        },
+        "input": {
+          "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "normal"
+        },
+        "payload": {
+          "fontFamily": "\"JetBrains Mono\", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
+          "fontSize": "13px",
+          "fontWeight": "400",
+          "lineHeight": "19.5px"
+        }
+      },
+      "nativeInputs": [
+        {
+          "id": "dossier-notes-input",
+          "bgColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(230, 237, 243)"
+        },
+        {
+          "id": "toolkit-input",
+          "bgColor": "rgb(7, 9, 13)",
+          "color": "rgb(230, 237, 243)"
+        },
+        {
+          "id": "caesar-shift-amount",
+          "bgColor": "rgb(7, 9, 13)",
+          "color": "rgb(230, 237, 243)"
+        },
+        {
+          "id": "vigenere-key-input",
+          "bgColor": "rgb(7, 9, 13)",
+          "color": "rgb(230, 237, 243)"
+        },
+        {
+          "id": "stage-answer-input",
+          "bgColor": "rgba(3, 8, 22, 0.9)",
+          "color": "rgb(255, 255, 255)"
+        }
+      ]
+    },
+    "1366": {
+      "width": 1366,
+      "overflowing": [],
+      "controlHeights": [
+        {
+          "id": "btn-paste-original",
+          "tag": "BUTTON",
+          "height": 35,
+          "computedHeight": "35px"
+        },
+        {
+          "id": "btn-undo-step",
+          "tag": "BUTTON",
+          "height": 36,
+          "computedHeight": "36px"
+        },
+        {
+          "id": "btn-reset-workbench",
+          "tag": "BUTTON",
+          "height": 35,
+          "computedHeight": "35px"
+        },
+        {
+          "id": "toolkit-input",
+          "tag": "TEXTAREA",
+          "height": 91,
+          "computedHeight": "91px"
+        },
+        {
+          "id": "btn-decode-b64",
+          "tag": "BUTTON",
+          "height": 40,
+          "computedHeight": "40px"
+        },
+        {
+          "id": "btn-decode-hex",
+          "tag": "BUTTON",
+          "height": 40,
+          "computedHeight": "40px"
+        },
+        {
+          "id": "btn-decode-rot13",
+          "tag": "BUTTON",
+          "height": 40,
+          "computedHeight": "40px"
+        },
+        {
+          "id": "btn-decode-atbash",
+          "tag": "BUTTON",
+          "height": 40,
+          "computedHeight": "40px"
+        },
+        {
+          "id": "btn-decode-reverse",
+          "tag": "BUTTON",
+          "height": 40,
+          "computedHeight": "40px"
+        },
+        {
+          "id": "btn-caesar-prev",
+          "tag": "BUTTON",
+          "height": 40,
+          "computedHeight": "40px"
+        }
+      ],
+      "typo": {
+        "title": {
+          "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+          "fontSize": "24px",
+          "fontWeight": "700",
+          "lineHeight": "38.4px"
+        },
+        "body": {
+          "fontFamily": "\"JetBrains Mono\", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
+          "fontSize": "12.48px",
+          "fontWeight": "600",
+          "lineHeight": "19.968px"
+        },
+        "label": {
+          "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "25.6px"
+        },
+        "button": {
+          "fontFamily": "\"Chakra Petch\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+          "fontSize": "14.08px",
+          "fontWeight": "700",
+          "lineHeight": "normal"
+        },
+        "input": {
+          "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "normal"
+        },
+        "payload": {
+          "fontFamily": "\"JetBrains Mono\", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
+          "fontSize": "13px",
+          "fontWeight": "400",
+          "lineHeight": "19.5px"
+        }
+      },
+      "nativeInputs": [
+        {
+          "id": "dossier-notes-input",
+          "bgColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(230, 237, 243)"
+        },
+        {
+          "id": "toolkit-input",
+          "bgColor": "rgb(7, 9, 13)",
+          "color": "rgb(230, 237, 243)"
+        },
+        {
+          "id": "caesar-shift-amount",
+          "bgColor": "rgb(7, 9, 13)",
+          "color": "rgb(230, 237, 243)"
+        },
+        {
+          "id": "vigenere-key-input",
+          "bgColor": "rgb(7, 9, 13)",
+          "color": "rgb(230, 237, 243)"
+        },
+        {
+          "id": "stage-answer-input",
+          "bgColor": "rgba(3, 8, 22, 0.9)",
+          "color": "rgb(255, 255, 255)"
+        }
+      ]
+    },
+    "1920": {
+      "width": 1920,
+      "overflowing": [],
+      "controlHeights": [
+        {
+          "id": "btn-paste-original",
+          "tag": "BUTTON",
+          "height": 35,
+          "computedHeight": "35px"
+        },
+        {
+          "id": "btn-undo-step",
+          "tag": "BUTTON",
+          "height": 36,
+          "computedHeight": "36px"
+        },
+        {
+          "id": "btn-reset-workbench",
+          "tag": "BUTTON",
+          "height": 35,
+          "computedHeight": "35px"
+        },
+        {
+          "id": "toolkit-input",
+          "tag": "TEXTAREA",
+          "height": 91,
+          "computedHeight": "91px"
+        },
+        {
+          "id": "btn-decode-b64",
+          "tag": "BUTTON",
+          "height": 40,
+          "computedHeight": "40px"
+        },
+        {
+          "id": "btn-decode-hex",
+          "tag": "BUTTON",
+          "height": 40,
+          "computedHeight": "40px"
+        },
+        {
+          "id": "btn-decode-rot13",
+          "tag": "BUTTON",
+          "height": 40,
+          "computedHeight": "40px"
+        },
+        {
+          "id": "btn-decode-atbash",
+          "tag": "BUTTON",
+          "height": 40,
+          "computedHeight": "40px"
+        },
+        {
+          "id": "btn-decode-reverse",
+          "tag": "BUTTON",
+          "height": 40,
+          "computedHeight": "40px"
+        },
+        {
+          "id": "btn-caesar-prev",
+          "tag": "BUTTON",
+          "height": 40,
+          "computedHeight": "40px"
+        }
+      ],
+      "typo": {
+        "title": {
+          "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+          "fontSize": "24px",
+          "fontWeight": "700",
+          "lineHeight": "38.4px"
+        },
+        "body": {
+          "fontFamily": "\"JetBrains Mono\", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
+          "fontSize": "12.48px",
+          "fontWeight": "600",
+          "lineHeight": "19.968px"
+        },
+        "label": {
+          "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "25.6px"
+        },
+        "button": {
+          "fontFamily": "\"Chakra Petch\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+          "fontSize": "14.08px",
+          "fontWeight": "700",
+          "lineHeight": "normal"
+        },
+        "input": {
+          "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "normal"
+        },
+        "payload": {
+          "fontFamily": "\"JetBrains Mono\", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
+          "fontSize": "13px",
+          "fontWeight": "400",
+          "lineHeight": "19.5px"
+        }
+      },
+      "nativeInputs": [
+        {
+          "id": "dossier-notes-input",
+          "bgColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(230, 237, 243)"
+        },
+        {
+          "id": "toolkit-input",
+          "bgColor": "rgb(7, 9, 13)",
+          "color": "rgb(230, 237, 243)"
+        },
+        {
+          "id": "caesar-shift-amount",
+          "bgColor": "rgb(7, 9, 13)",
+          "color": "rgb(230, 237, 243)"
+        },
+        {
+          "id": "vigenere-key-input",
+          "bgColor": "rgb(7, 9, 13)",
+          "color": "rgb(230, 237, 243)"
+        },
+        {
+          "id": "stage-answer-input",
+          "bgColor": "rgba(3, 8, 22, 0.9)",
+          "color": "rgb(255, 255, 255)"
+        }
+      ]
+    }
+  },
+  "consoleErrors": []
+}

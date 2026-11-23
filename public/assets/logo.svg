@@ -11,7 +11,7 @@
     </linearGradient>
     <linearGradient id="neon" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#27b4ff"/>
-      <stop offset="100%" stop-color="#0066cc"/>
+      <stop offset="0%" stop-color="#0066cc"/>
     </linearGradient>
   </defs>
   <circle cx="100" cy="100" r="94" fill="url(#bg)" stroke="url(#gold)" stroke-width="6"/>

@@ -1,0 +1,211 @@
+{
+  "stageNames": {
+    "1": "Signal Intercept & Morse Matrix",
+    "2": "Decoding",
+    "3": "Prompt AI",
+    "4": "CTF Challenges",
+    "5": "Team Sync & Final Override"
+  },
+  "stage1": {
+    "title": "Stage 1: Signal Intercept & Morse Matrix",
+    "answer": "FAKE",
+    "decoy": "TRAP9",
+    "memorise": {
+      "title": "PHASE 1: MEMORISE THE CODE",
+      "text": "MEMORISE THE CODE. You have 5 minutes. The chart will close, and the mission starts when the timer ends. You will need these letters and their patterns to decode the four sectors. Take note of the patterns now.",
+      "guidelines": [
+        "Study the pattern for each letter carefully.",
+        "Group the letters that look alike or share complementary rhythms.",
+        "Learn to match patterns quickly under pressure."
+      ]
+    },
+    "intro": {
+      "title": "MISSION 1: DECODE THE 4-LETTER VAULT CODE",
+      "text": "The vault door is locked with a secret 4-letter password. Our radio antenna intercepted 4 signals (Sector 1, 2, 3, and 4). Each sector gives you exactly 1 letter in Morse code.",
+      "explanation": "Decode each sector into 1 letter using Morse code. Enter all 4 letters in order (Letter 1 to 4) to crack the vault."
+    },
+    "sectors": [
+      {
+        "id": 1,
+        "name": "SECTOR 1",
+        "badge": "PULSE SIGNAL"
+      },
+      {
+        "id": 2,
+        "name": "SECTOR 2",
+        "badge": "BINARY CODE"
+      },
+      {
+        "id": 3,
+        "name": "SECTOR 3",
+        "badge": "BLINKING LIGHT",
+        "buttonText": "▶ Watch Light Blink",
+        "unitMs": 600,
+        "leadInMs": 800
+      },
+      {
+        "id": 4,
+        "name": "SECTOR 4",
+        "badge": "SATELLITE SIGNAL"
+      }
+    ],
+    "hints": [
+      "Reveal the 26-letter Morse Code Reference Chart for 30 seconds."
+    ],
+    "policy": {
+      "kind": "chart",
+      "max_uses": null,
+      "cost_schedule_minutes": [3, 5],
+      "display_seconds": 30,
+      "enabled": true
+    },
+    "memoriseSeconds": 300,
+    "chart": {
+      "randomise": "mapping",
+      "order": "alphabetical"
+    }
+  },
+  "stage2": {
+    "title": "Stage 2: Layered Cryptanalysis & Sequence Assembly",
+    "accessPhrase": "CYGNUS",
+    "plaintext": "ACCESS PHRASE IS CYGNUS. ASSEMBLE YOUR TEAM SEQUENCE IN LOWERCASE.",
+    "encodedText": "NTA1MzUxNTQ0OTQ3MjA0NTU4NDY1MDQ5NTMyMDU4NDkyMDUxNEU1NzQyNEE0OTJFMjA0RjQ4NDk1MzQyNTI1QTU0MjA0RjQzNEE0ODIwNDg1NDUxNDEyMDQ4NTU0NTRBNTU0MjUyNTUyMDU3NDMyMDQyNDM0QzU1NDY1MjUxNDc1NDJF",
+    "fragments": [
+      {
+        "id": 1,
+        "label": "PART-1",
+        "code": "1A"
+      },
+      {
+        "id": 3,
+        "label": "PART-3",
+        "code": "2B"
+      },
+      {
+        "id": 5,
+        "label": "PART-5",
+        "code": "3C"
+      },
+      {
+        "id": 7,
+        "label": "PART-7",
+        "code": "4D"
+      }
+    ],
+    "answer": "1a2b3c4d",
+    "hints": [
+      "Inspect character sets to peel layers: Base64 uses [A-Za-z0-9+/=], Hex uses [0-9A-Fa-f], ROT13 preserves spacing and punctuation. The innermost cipher is numeric Vigenère.",
+      "Peel the layers in order: Base64 -> Hex -> ROT13. Then read the decoder button index numbers in the exact order you clicked them to form your Vigenère key."
+    ],
+    "plaintextTemplate": "ACCESS PHRASE IS CYGNUS. ASSEMBLE YOUR TEAM SEQUENCE IN LOWERCASE.",
+    "modules": [
+      {
+        "id": "rot13",
+        "index": 1,
+        "label": "ROT13",
+        "type": "letter-sub"
+      },
+      {
+        "id": "base64",
+        "index": 2,
+        "label": "Base64",
+        "type": "encoding"
+      },
+      {
+        "id": "hex",
+        "index": 3,
+        "label": "Hex",
+        "type": "encoding"
+      },
+      {
+        "id": "atbash",
+        "index": 4,
+        "label": "Atbash",
+        "type": "letter-sub"
+      },
+      {
+        "id": "reverse",
+        "index": 5,
+        "label": "Reverse",
+        "type": "transposition"
+      },
+      {
+        "id": "caesar",
+        "index": 6,
+        "label": "Caesar (shift 3)",
+        "type": "letter-sub",
+        "shift": 3
+      }
+    ],
+    "layers": [
+      "base64",
+      "hex",
+      "rot13"
+    ],
+    "vigenere": {
+      "mode": "module-index-sequence",
+      "maxLength": 12
+    },
+    "howToPlay": [
+      "Copy or paste the intercepted payload into the workbench input.",
+      "Inspect the character set to identify which encoding was applied last.",
+      "Apply that decoder by clicking its numbered button (each can be used once).",
+      "Repeat for each layer until you reveal readable English that looks scrambled by a substitution cipher.",
+      "Take the sequence of decoder numbers you used, in the exact order you clicked them (for example 2, 3, 1 becomes 231).",
+      "Enter that number sequence into the Vigenère key input and click 'Decode with key'.",
+      "Read the access phrase, then assemble your team's assigned part numbers in the exact order shown on the left."
+    ]
+  },
+  "stage3": {
+    "title": "Stage 3: Neural Warden Comms Protocol",
+    "realFragment": "REAL_PIECE",
+    "decoyFragment": "DECOY_PIECE",
+    "accessPhrase": "EXAMPLE_PHRASE",
+    "hints": [
+      "State your official role, access phrase from Stage 2, and mission goal in full sentences.",
+      "WARDEN will hand out a decoy fragment if you ask carelessly."
+    ]
+  },
+  "stage4": {
+    "title": "Stage 4: Capture The Flag & Terminal Infiltration",
+    "tokens": {
+      "token1": "1",
+      "token2": "2",
+      "token3": "3"
+    },
+    "answer": "123",
+    "commentToken": "<!-- token1 = 1 -->",
+    "briefing": {
+      "objective": "Recover three distributed verification tokens.",
+      "technicalConcepts": [
+        {
+          "term": "HTML Comments",
+          "definition": "Source code comments."
+        }
+      ],
+      "rules": "Enter commands into the cyber terminal console.",
+      "howToStart": "Inspect page source for Token 1."
+    },
+    "hints": [
+      "Token 1 is in DOM inspection; Token 2 in terminal; Token 3 in metadata.",
+      "Join the three tokens."
+    ]
+  },
+  "mixedCountBySize": {
+    "3": 2,
+    "4": 2
+  },
+  "stage5": {
+    "title": "Stage 5: Team Sync & Final Override",
+    "machineNames": [
+      "mockServerAlpha",
+      "mockGridNode01",
+      "mockCoreRelay",
+      "mockNexusVault"
+    ],
+    "hints": [
+      "Every team member must connect from their individual device to reveal their unique shard.",
+      "Authorize machines by combining all squad member shards in registration order separated by dashes: SHARD1-SHARD2-SHARD3 (or SHARD1-SHARD2-SHARD3-SHARD4)."
+    ]
+  }
+}

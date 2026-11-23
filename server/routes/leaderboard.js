@@ -3,6 +3,12 @@ const router = express.Router();
 const ds = require('../dataService');
 const config = require('../config');
 
+// In-memory 2-second cache
+let cachedLeaderboard = {
+  data: null,
+  timestamp: 0
+};
+
 // Helper to format mm:ss or hh:mm:ss
 function formatClock(seconds) {
   const hrs = Math.floor(seconds / 3600);
@@ -17,8 +23,26 @@ function formatClock(seconds) {
 // GET /api/leaderboard - Live public status with event timer
 router.get('/', async (req, res) => {
   try {
-    const teams = await ds.getAllTeams();
     const now = Date.now();
+
+    // Check if leaderboard is frozen
+    const isFrozen = (await ds.getSetting('leaderboardFrozen', 'false')) === 'true';
+    if (isFrozen) {
+      const snapshotStr = await ds.getSetting('leaderboardSnapshot', null);
+      if (snapshotStr) {
+        try {
+          const snapshot = JSON.parse(snapshotStr);
+          return res.json({ ...snapshot, isFrozen: true });
+        } catch (_) {}
+      }
+    }
+
+    // 2-second in-memory cache check
+    if (cachedLeaderboard.data && (now - cachedLeaderboard.timestamp < 2000)) {
+      return res.json(cachedLeaderboard.data);
+    }
+
+    const teams = await ds.getAllTeams();
 
     const clockPausedVal = await ds.getSetting('clockPaused', 'false');
     const isClockPaused = clockPausedVal === 'true';
@@ -109,7 +133,7 @@ router.get('/', async (req, res) => {
       return a.totalWrong - b.totalWrong;
     });
 
-    return res.json({
+    const payload = {
       teams: processed,
       isClockPaused,
       serverTime: now,
@@ -121,7 +145,12 @@ router.get('/', async (req, res) => {
         totalSeconds: eventElapsedSeconds,
         formattedTime: formatClock(eventElapsedSeconds)
       }
-    });
+    };
+
+    cachedLeaderboard.data = payload;
+    cachedLeaderboard.timestamp = now;
+
+    return res.json(payload);
   } catch (err) {
     console.error('Leaderboard error:', err);
     return res.status(500).json({ error: 'Server error retrieving leaderboard.' });

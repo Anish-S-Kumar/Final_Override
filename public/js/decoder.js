@@ -1,11 +1,8 @@
-// Decoding & Cryptographic Workbench tools for Stage 2
+// FINAL OVERRIDE — Decoding & Cryptographic Workbench Tools
+// Supports Base64, Hexadecimal, ROT13, Atbash, Caesar shift, and Vigenere ciphers.
 
 function rot13(str) {
-  return str.replace(/[a-zA-Z]/g, (c) => {
-    const code = c.charCodeAt(0);
-    const base = code >= 97 ? 97 : 65;
-    return String.fromCharCode(((code - base + 13) % 26) + base);
-  });
+  return caesarShift(str, 13);
 }
 
 function base64Decode(str) {
@@ -43,11 +40,12 @@ function rot5(str) {
   });
 }
 
-function caesar3(str) {
+function caesarShift(str, shift = 3) {
+  const s = ((shift % 26) + 26) % 26;
   return str.replace(/[a-zA-Z]/g, (c) => {
     const isUpper = c >= 'A' && c <= 'Z';
     const base = isUpper ? 65 : 97;
-    return String.fromCharCode(((c.charCodeAt(0) - base + 3) % 26) + base);
+    return String.fromCharCode(((c.charCodeAt(0) - base + s) % 26) + base);
   });
 }
 
@@ -55,8 +53,10 @@ function reverseStr(str) {
   return str.split('').reverse().join('');
 }
 
-function vigenereDecode(str, key = 'INVICTORS') {
-  const k = key.toUpperCase();
+function vigenereDecode(str, key = '') {
+  if (!key) return str;
+  const k = key.toUpperCase().replace(/[^A-Z]/g, '');
+  if (!k) return str;
   let kIdx = 0;
   return str.replace(/[a-zA-Z]/g, (c) => {
     const isUpper = c >= 'A' && c <= 'Z';
@@ -73,7 +73,8 @@ window.decoderTools = {
   hexDecode,
   atbash,
   rot5,
-  caesar3,
+  caesar3: (s) => caesarShift(s, 3),
+  caesarShift,
   reverse: reverseStr,
   vigenere: vigenereDecode
 };

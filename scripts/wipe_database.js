@@ -1,11 +1,35 @@
 require('dotenv').config();
+const readline = require('readline');
 const { createClient } = require('@supabase/supabase-js');
 let sqliteDb = null;
 try {
   sqliteDb = require('../server/db');
 } catch (_) {}
 
+async function confirmWipe() {
+  if (process.argv.includes('--yes') || process.argv.includes('-y')) {
+    return true;
+  }
+  if (!process.stdin.isTTY) {
+    console.error('Refusing to run without --yes flag in non-interactive environment.');
+    process.exit(1);
+  }
+  const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
+  return new Promise(resolve => {
+    rl.question('⚠️ CAUTION: This will purge all database data! Type WIPE to continue: ', answer => {
+      rl.close();
+      if (answer.trim() === 'WIPE') {
+        resolve(true);
+      } else {
+        console.log('Aborted. Database was not modified.');
+        process.exit(1);
+      }
+    });
+  });
+}
+
 async function wipe() {
+  await confirmWipe();
   console.log('🧹 Starting complete dataset purge...');
 
   // 1. Wipe Supabase if configured
@@ -17,7 +41,6 @@ async function wipe() {
     const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY, supabaseOpts);
 
     console.log('📡 Purging Supabase cloud database...');
-    // Delete dependent tables first
     await supabase.from('submissions').delete().neq('id', 0);
     await supabase.from('chat').delete().neq('id', 0);
     await supabase.from('violations').delete().neq('id', '0');
@@ -25,7 +48,6 @@ async function wipe() {
     await supabase.from('members').delete().neq('id', '0');
     await supabase.from('teams').delete().neq('id', '0');
 
-    // Reset settings
     const defaultSettings = [
       { key: 'clockPaused', value: 'false' },
       { key: 'pauseStartedAt', value: '0' },
@@ -34,6 +56,7 @@ async function wipe() {
       { key: 'totalPausedMs', value: '0' },
       { key: 'startTogetherMode', value: 'true' },
       { key: 'gameStarted', value: 'false' },
+      { key: 'leaderboardFrozen', value: 'false' },
       { key: 'winnersNotepad', value: '🏆 INVICTORS FINAL OVERRIDE — OFFICIAL WINNERS SCRATCHPAD\n=======================================================\n1st Place:\n2nd Place:\n3rd Place:\n\nSpecial Mentions:\nJudge Notes:\n' }
     ];
 
@@ -55,7 +78,7 @@ async function wipe() {
         DELETE FROM progress;
         DELETE FROM members;
         DELETE FROM teams;
-        UPDATE settings SET value = 'false' WHERE key IN ('clockPaused', 'gameStarted', 'allowNewTeams');
+        UPDATE settings SET value = 'false' WHERE key IN ('clockPaused', 'gameStarted', 'allowNewTeams', 'leaderboardFrozen');
         UPDATE settings SET value = '0' WHERE key IN ('pauseStartedAt', 'eventStartedAt', 'totalPausedMs');
         UPDATE settings SET value = 'true' WHERE key = 'startTogetherMode';
       `);

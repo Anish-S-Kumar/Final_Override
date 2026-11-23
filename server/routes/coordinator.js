@@ -2,17 +2,26 @@ const express = require('express');
 const router = express.Router();
 const ds = require('../dataService');
 const config = require('../config');
-const { norm } = require('../logic/security');
+const { norm, generateVerificationCode } = require('../logic/security');
+const { getClientIp, checkLoginRateLimit, recordFailedLogin, resetLoginRateLimit } = require('../logic/rateLimiter');
 
 // POST /api/coordinator/verify - Verify coordinator name and PIN
 router.post('/verify', (req, res) => {
+  const ip = getClientIp(req);
+  if (!checkLoginRateLimit(ip)) {
+    return res.status(429).json({ error: 'Too many failed login attempts. Please try again after 10 minutes.' });
+  }
+
   const { name, pin } = req.body || {};
   if (!name || !pin) {
     return res.status(400).json({ error: 'Coordinator name and PIN are required.' });
   }
   if (!config.verifyCoordinatorPin(name, pin)) {
+    recordFailedLogin(ip);
     return res.status(401).json({ error: 'Invalid Coordinator PIN.' });
   }
+
+  resetLoginRateLimit(ip);
   return res.json({ success: true, coordinator: name.trim() });
 });
 
@@ -86,7 +95,8 @@ router.get('/', async (req, res) => {
         totalHints,
         totalWrong,
         tabSwitches: t.tabSwitches || 0,
-        status
+        status,
+        verificationCode: t.finishedAt ? generateVerificationCode(t.name, t.startedAt, t.finishedAt) : null
       };
     }));
 

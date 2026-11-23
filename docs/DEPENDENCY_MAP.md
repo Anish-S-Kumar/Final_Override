@@ -1,0 +1,27 @@
+# FINAL OVERRIDE — End-to-End Dependency Map
+
+**Document Version:** 1.0.0  
+**Date:** 2026-11-21  
+**Architecture:** Node.js Express Backend -> Dual Adapter Repository (Supabase / SQLite)
+
+---
+
+## Feature-to-Backend Dependency Matrix
+
+| Feature | Primary HTTP Route | Tables / Entities | Functions / RPCs | Backend Operations | Notes & Constraints |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Team Registration** | `POST /api/teams` | `teams`, `members`, `team_sequences`, `progress`, `settings` | `register_team` | Normalise names, validate 3 or 4 members, generate cryptographic seed, assign HMAC shards, create initial progress rows. | Member 4 optional; rejects duplicate team/member names; sets `stage1OpensAt = now + 60000`. |
+| **State Polling** | `GET /api/state` | `teams`, `members`, `progress`, `hint_usage`, `settings`, `team_sequences` | `get_team_state` | Version check against ETag / `?v=`, read current stage progress, enforce stage content isolation, verify hint window. | 5s poll interval; cached in-memory by state version; returns 304 or `{notModified: true}` when unchanged. |
+| **Stage Submissions & Validation** | `POST /api/submit` | `teams`, `submissions`, `progress`, `audit_log` | `submit_answer`, `advance_stage` | Lock team mutex, verify leader token, validate answer hash, enforce Stage 1 calibration lock, record submission attempt, charge penalty after 5 free wrong attempts. | Idempotent via `idempotencyKey`; conditional update (`WHERE stage = currentStage`) prevents race-condition double advancement. |
+| **Hint Unlocking & Billing** | `POST /api/hint` | `teams`, `hint_config`, `hint_usage`, `progress`, `audit_log` | `request_hint` | Verify team not finished or paused, check `currentHintsUsed < 2`, charge penalty (+3m or +5m), record usage, set temporary `visibleUntil`. | Stage 1 hint unlocks Morse table for exactly 30s; re-request while active is free (`alreadyActive: true`). |
+| **Stage 5 Multi-Device Member Join** | `POST /api/join` | `teams`, `members`, `audit_log` | `join_member` | Verify member name on team, verify unique browser device token, bind `deviceToken` to member, issue member cookie. | Required before Stage 5 submission can be authorized; prevents duplicate device claiming or leader claiming member shards. |
+| **Stage 5 & Stage 6 Master Key Derivation** | `POST /api/submit` (Stages 5 & 6) | `teams`, `members`, `progress`, `submissions` | `compute_stage5_override`, `derive_final_key` | Stage 5: verifies all members joined and validates concatenated member shards. Stage 6: derives final override key from fragments 1–5 and verified machines. | Pure config-driven derivation; no hardcoded student keys or legacy reverse-string checksums. |
+| **Time Cap Enforcement** | `GET /api/state`, `POST /api/submit` | `teams`, `settings` | `check_time_cap` | Compares elapsed mission time against `TIME_CAP_MINUTES` (default 90m), accounting for paused milliseconds. | When expired, state transitions to `timed_out` and further submissions are blocked. |
+| **Global & Team Pause** | `POST /api/admin/pause`, `POST /api/admin/team-pause` | `teams`, `settings`, `audit_log` | `pause_team`, `resume_team`, `set_global_pause` | Sets `isPaused` flag, tracks `teamPauseStartedAt` or `pauseStartedAt`, adds elapsed pause to `pausedMs` on resume. | Freezes countdown timers on client and server. |
+| **Anti-Tamper & Tab Penalty** | `POST /api/tab-penalty` | `teams`, `violations`, `audit_log` | `add_violation` | Validates `visibilitychange` departure, enforces 5s debounce & 3s grace period, logs violation, adds penalty minutes. | Stage 4 is exempt from tab departure penalties. |
+| **Leaderboard** | `GET /api/leaderboard` | `teams`, `progress`, `settings` | `get_leaderboard` | Queries all teams, computes effective finish time + penalties, ranks teams by lowest total time. | Cached for 2s in memory; respects `leaderboardFreeze` setting. |
+| **Coordinator View** | `GET /api/coordinator` | `teams`, `members`, `progress` | `get_coordinator_teams` | Validates coordinator name + PIN, filters teams strictly by assigned coordinator. | Isolated data view; coordinators cannot view other coordinators' teams. |
+| **Admin Oversight & Actions** | `GET/POST /api/admin/*` | `teams`, `members`, `progress`, `settings`, `audit_log`, `admin_sessions` | `admin_overview`, `reset_stage`, `adjust_penalty`, `reissue_leader_session` | Authenticates via timing-safe `ADMIN_PIN` comparison or session token, allows manual score adjustment, team reset, or leader token recovery. | Every action logs an immutable audit entry to `audit_log`. |
+| **Hint Management (Admin)** | `GET/PUT /api/admin/hints` | `hint_config`, `audit_log` | `get_hint_configs`, `update_hint_config` | Lists and modifies hint costs, durations, text, and active statuses across stages 1–6. | Audited with previous and updated values; restricted strictly to admin role. |
+| **Data Exports** | `GET /api/admin/export/csv`, `GET /api/admin/export/json` | `teams`, `members`, `progress`, `submissions`, `violations`, `audit_log` | `export_results` | Streams complete structured data dumps for offline analysis and verification. | Restricted to admin role. |
+| **Database Backups** | Periodic background task | File system / Supabase | `backup_sqlite`, `export_supabase` | SQLite: atomic file copy every 5 minutes (rotates 20 copies). Supabase: automated platform backups + manual export scripts. | Automated fail-safe against data loss. |
